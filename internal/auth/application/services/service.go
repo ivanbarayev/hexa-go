@@ -28,6 +28,13 @@ func NewAuthService(cfg *config.Config, pgRepo ports.IPostgresqlRepository, logg
 	return &serviceAuth{cfg: cfg, pgRepo: pgRepo, logger: logger}
 }
 
+func (t serviceAuth) Register(ctx context.Context, req_body ent.RegisterReq) (record int64) {
+
+	record = t.pgRepo.Register(ctx, req_body)
+
+	return
+}
+
 func (t serviceAuth) Login(ctx context.Context, req_body ent.LoginReq) (record int64, data ent.Auth) {
 
 	record, data = t.pgRepo.Login(ctx, req_body)
