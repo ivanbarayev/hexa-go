@@ -1,0 +1,110 @@
+server:
+  PROJECT_NAME: "Auth Service"
+  SERVICE_NAME: "auth-broker"
+  APP_ENV: "dev"
+  APP_DEBUG: true
+  TIMEOUT: 15
+  APP_SECRET: 'PSST_VERY_SECRET_JWT_SECRET'
+  JWT_TOKEN_EXPIRE_TIME: 8760
+  APP_VERSION: 1.0.0
+  READ_TIMEOUT: 5
+  WRITE_TIMEOUT: 5
+  MAX_CONN_IDLE: 5
+  MAX_CONN_AGE: 5
+
+swagger:
+  SWAGGER_BASIC_AUTH_USERNAME:
+  SWAGGER_BASIC_AUTH_PASSWORD:
+
+cloud:
+  GCP_PROJECT_IDENTIFIER:
+  AWS_PROJECT_IDENTIFIER:
+  GCP_SERVICE_ACCOUNT:
+
+http:
+  PORT: "5007"
+  TIMEOUT: 15
+  READ_TIMEOUT: 5
+  WRITE_TIMEOUT: 5
+  COOKIE_LIFE_TIME: 44640
+  SESSION_COOKIE_NAME: "session_token"
+  SSL_CERT_PATH: ""
+  SSL_CERT_KEY: ""
+
+grpc:
+  PORT: "5008"
+  TIMEOUT: 15
+  READ_TIMEOUT: 5
+  WRITE_TIMEOUT: 5
+  COOKIE_LIFE_TIME: 44640
+  SESSION_COOKIE_NAME: "session_token"
+  SSL_CERT_PATH: ""
+  SSL_CERT_KEY: ""
+
+logger:
+  DISABLE_CALLER: false
+  DISABLE_STACKTRACE: false
+  ENCODING: json
+  LEVEL: info
+
+postgresql:
+  HOST: "127.0.0.1"
+  PORT: 5432
+  USER: "DB_USER"
+  PASS: "PASS"
+  DEFAULT_DB: "DEFAULT_DB"
+  MAX_CONN: 10
+  DRIVER: "pgx"
+
+mysql:
+  HOST: "127.0.0.1"
+  PORT: 3306
+  USER: "DB_USER"
+  PASS: "PASS"
+  DEFAULT_DB: "DEFAULT_DB"
+  MAX_CONN: 10
+
+mssql:
+  HOST: "127.0.0.1"
+  PORT: 1433
+  USER: "DB_USER"
+  PASS: "PASS"
+  DEFAULT_DB: "DEFAULT_DB"
+  MAX_CONN: 10
+
+mongodb:
+  HOST: "127.0.0.1"
+  PORT:
+  USER: "DB_USER"
+  PASS: "PASS"
+  DEFAULT_DB: "DEFAULT_DB"
+  MONGO_DB_ATLAS: "mongodb+srv://{USER_NAME}:{USER_PASS}@{DB_HOST}/{DEFAULT_DB}?retryWrites=true&w=majority"
+
+redis:
+  HOST: "127.0.0.1"
+  PORT: 18349
+  USER: "default"
+  PASS: "PASS"
+  DEFAULT_DB: 1
+  MIN_IDLE_CONN: 200
+  POOL_SIZE: 12000
+  POOL_TIMEOUT: 240
+
+clickhouse:
+  HOST: "127.0.0.1"
+  PORT: 9000
+  USER: "root"
+  PASS: "password"
+  DEFAULT_DB: "public"
+
+firestore:
+  PROJECT_ID: "{PROJECT_ID}"
+  DEFULT_COLLECTION: "examples"
+  CREDENTIALS_PATH: "config/fcm_credentials.json"
+
+nats:
+  SERVER_HOST: "127.0.0.1"
+  SERVER_PORT: 4222
+
+rabbitmq:
+  URI: "amqp://admin:password@127.0.0.1:5672/"

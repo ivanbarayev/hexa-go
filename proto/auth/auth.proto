@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package authService;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/descriptor.proto";
+import "google/api/annotations.proto";
+
+option go_package = ".;authService";
+
+message AuthLoginRequest {
+  string user_name = 1;
+  string password = 2;
+}
+
+message AuthLoginResponse {
+  string error = 1;
+  string message = 2;
+}
+
+message HealthCheckRequest {}
+message HealthCheckResponse {
+  string response = 1;
+}
+
+
+
+service authService {
+  rpc Login(AuthLoginRequest) returns (AuthLoginResponse){};
+  rpc HealthCheck (google.protobuf.Empty) returns (HealthCheckResponse) {
+    option (google.api.http) = { get: "/api/v1/health" };
+  }
+}

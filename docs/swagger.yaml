@@ -1,0 +1,121 @@
+basePath: /v1
+definitions:
+  entities.HandlerResponse:
+    properties:
+      data: {}
+      error:
+        type: boolean
+      message:
+        type: string
+    type: object
+  entities.LoginReq:
+    properties:
+      src:
+        maximum: 5
+        minimum: 1
+        type: integer
+      user_name:
+        maxLength: 20
+        minLength: 10
+        type: string
+      user_pass:
+        maxLength: 16
+        minLength: 8
+        type: string
+      user_type:
+        maximum: 5
+        minimum: 1
+        type: integer
+      verify_code:
+        type: integer
+    required:
+    - src
+    - user_name
+    - user_pass
+    - user_type
+    type: object
+  entities.RegisterReq:
+    properties:
+      company_name:
+        type: string
+      src:
+        maximum: 5
+        minimum: 1
+        type: integer
+      user_name:
+        maxLength: 50
+        minLength: 10
+        type: string
+      user_pass:
+        type: string
+      user_phone:
+        maxLength: 20
+        minLength: 10
+        type: string
+      user_title:
+        type: string
+      user_type:
+        maximum: 5
+        minimum: 1
+        type: integer
+      verify_code:
+        type: integer
+    required:
+    - src
+    - user_name
+    - user_phone
+    - user_title
+    - user_type
+    type: object
+info:
+  contact:
+    email: ivanbarayev@hotmail.com
+  description: Common Auth service broker with REST endpoints
+  title: Auth Service
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Login process
+      parameters:
+      - description: '`Body for user registration`'
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/entities.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Login
+      tags:
+      - Auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Registration process
+      parameters:
+      - description: '`Body for user registration`'
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/entities.RegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entities.HandlerResponse'
+      summary: Register
+      tags:
+      - Auth
+swagger: "2.0"
